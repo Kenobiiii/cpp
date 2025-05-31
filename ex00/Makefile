@@ -5,7 +5,7 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 USER = paromero
 OBJ_DIR = objs
 SRCS = megaphone.cpp
-OBJS = $(patsubst src/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 NAME = megaphone
 
@@ -19,7 +19,7 @@ $(NAME): $(OBJS)
 	@$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Executable created: $(NAME)$(RESET)"
 
-$(OBJ_DIR)/%.o: src/%.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@echo "$(GREEN)Compiling $<...$(RESET)"
 	@mkdir -p $(dir $@)
 	@$(CC) $(CPPFLAGS) -c $< -o $@
