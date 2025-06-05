@@ -5,9 +5,9 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 USER = paromero
 OBJ_DIR = objs
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp ClapTrap.cpp
 
-NAME = Fixed
+NAME = ClapTrap
 
 GREEN = \033[1;32m
 RESET = \033[0m

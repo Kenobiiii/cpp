@@ -19,20 +19,16 @@
 
 class ClapTrap {
     private:
-        string name_;
-        const int Hit_points__ = 10;
-        const int Energy_points_ = 10;
-        const int Attack_damage_ = 0;
+        std::string name_;
+        int Hit_points_;
+        int Energy_points_;
+        int Attack_damage_;
         
     public:
-        ClapTrap();
+        ClapTrap(const std::string& name);
 
         ~ClapTrap();
-        
-        ClapTrap(const int value);
-        
-        ClapTrap(const float value);
-        
+
         //- Copy constructor, copy into a new var the value and assigns new direction
         ClapTrap(const ClapTrap& other);
         
