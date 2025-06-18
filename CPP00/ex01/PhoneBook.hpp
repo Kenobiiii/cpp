@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 12:42:43 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:10:03 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <iostream>
 # include <iomanip>
 # include <sstream>
+# include <cstdlib>
+# include <cctype>
 
 class PhoneBook {
     private:
@@ -24,10 +26,12 @@ class PhoneBook {
         int currentIndex_;
         int totalContacts_;
 
-        std::string getInput(const std::string& prompt) const;
+        std::string getInput(const std::string& prompt, int i) const;
         void displayContactsTable() const;
         void displayContactRow(int index, const Contact& contact) const;
-        int  is_space(std::string str) const;
+        std::string DeleteSpaces(const std::string& str) const;
+        bool is_alphanumeric(const std::string& str) const;
+        bool valid_phonenumber(const std::string& str) const;
 
     public:
         PhoneBook();

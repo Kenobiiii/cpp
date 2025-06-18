@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:22:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/17 15:09:30 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:09:31 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+
+std::string ft_toupper(std::string& str) {
+    for (size_t i = 0; i < str.length(); i++)
+        str[i] = (char)std::toupper(str[i]);
+    return str;
+}
 
 int main() {
     PhoneBook phoneBook;
@@ -29,7 +35,7 @@ int main() {
             std::cout << std::endl;
             break;
         }
-        
+        command = ft_toupper(command);
         if (command == "ADD") {
             phoneBook.addContact();
         }

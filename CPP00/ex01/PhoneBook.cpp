@@ -6,15 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 12:42:34 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:13:55 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iostream>
-#include <iomanip>
-#include <sstream>
-#include <cstdlib>
 
 //- Constructor: initializes the counters
 PhoneBook::PhoneBook() : currentIndex_(0), totalContacts_(0) {
@@ -24,17 +20,46 @@ PhoneBook::PhoneBook() : currentIndex_(0), totalContacts_(0) {
 PhoneBook::~PhoneBook() {
 }
 
-int PhoneBook::is_space(std::string str) const {
-    for (int i = 0; str[i]; i++) {
-        if (str[i] != ' ' || str[i] != '\t')
-            return 1;
+std::string PhoneBook::DeleteSpaces(const std::string& str) const {
+    size_t start = 0;
+    size_t end = str.length();
+    
+    while (start < end && str[start] == ' ') {
+        start++;
     }
-    return 0;
+    
+    //- Find last non-space/tab character
+    while (end > start && str[end - 1] == ' ') {
+        end--;
+    }
+    
+    return str.substr(start, end - start);
+}
+
+bool PhoneBook::is_alphanumeric(const std::string& str) const {
+    for (size_t i = 0; i < str.length(); i++) {
+        if (!std::isalnum(str[i]) && str[i] != ' ') {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool PhoneBook::valid_phonenumber(const std::string& str) const {
+    for (size_t i = 0; i < str.length(); i++) {
+        if (!std::isdigit(str[i]) && str[i] != ' ') {
+            return false;
+        }
+    }
+    if (str.length() < 9)
+        return false;
+    return true;
 }
 
 //- Request input from user and validate it's not empty
-std::string PhoneBook::getInput(const std::string& prompt) const {
+std::string PhoneBook::getInput(const std::string& prompt, int i) const {
     std::string input;
+    std::string FixedInput;
     
     do {
         std::cout << prompt;
@@ -45,16 +70,22 @@ std::string PhoneBook::getInput(const std::string& prompt) const {
             exit(0);
         }
         
-        if (!is_space(input)) {
-            std::cout << "Field cannot be empty. Please try again." << std::endl;
-        }
+        FixedInput = DeleteSpaces(input);
         
-        if (input.empty()) {
+        if (FixedInput.empty()) {
             std::cout << "Field cannot be empty. Please try again." << std::endl;
         }
-    } while (input.empty());
+        else if (!is_alphanumeric(FixedInput)) {
+            std::cout << "Print alphanumeric values" << std::endl;
+        }
+
+        if (i && !valid_phonenumber(FixedInput)) {
+            std::cout << "Must be a valid phone number" << std::endl;
+        }
+
+    } while (FixedInput.empty() || !is_alphanumeric(FixedInput) || (i && !valid_phonenumber(FixedInput)));
     
-    return input;
+    return FixedInput;
 }
 
 //- Display one row of the contacts table
@@ -83,11 +114,11 @@ void PhoneBook::displayContactsTable() const {
 void PhoneBook::addContact() {
     Contact newContact;
     
-    std::string name = getInput("Enter first name: ");
-    std::string surname = getInput("Enter last name: ");
-    std::string nickname = getInput("Enter nickname: ");
-    std::string phoneNumber = getInput("Enter phone number: ");
-    std::string darkestSecret = getInput("Enter darkest secret: ");
+    std::string name = getInput("Enter first name: ", 0);
+    std::string surname = getInput("Enter last name: ", 0);
+    std::string nickname = getInput("Enter nickname: ", 0);
+    std::string phoneNumber = getInput("Enter phone number: ", 1);
+    std::string darkestSecret = getInput("Enter darkest secret: ", 0);
     
     newContact.setName(name);
     newContact.setSurname(surname);
