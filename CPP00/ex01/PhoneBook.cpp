@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 17:13:55 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 18:58:25 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool PhoneBook::valid_phonenumber(const std::string& str) const {
             return false;
         }
     }
-    if (str.length() < 9)
+    if (str.length() < 9 || str.length() > 15)
         return false;
     return true;
 }
@@ -106,7 +106,7 @@ void PhoneBook::displayContactsTable() const {
     std::cout << "|" << std::endl;
     
     for (int i = 0; i < totalContacts_; i++) {
-        displayContactRow(i, contacts_[i]);
+        displayContactRow(i + 1, contacts_[i]);
     }
 }
 
@@ -157,8 +157,8 @@ void PhoneBook::searchContact() const {
     std::stringstream ss(input); //- stringstream verify if the input can be transformed to int
     int index;
     
-    if (ss >> index && ss.eof() && index >= 0 && index < totalContacts_) {
-        contacts_[index].displayContact();
+    if (ss >> index && ss.eof() && index > 0 && index <= totalContacts_) {
+        contacts_[index - 1].displayContact();
     } else {
         std::cout << "Invalid index." << std::endl;
     }
