@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/17 15:09:30 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:42:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ class PhoneBook {
         std::string getInput(const std::string& prompt) const;
         void displayContactsTable() const;
         void displayContactRow(int index, const Contact& contact) const;
+        int  is_space(std::string str) const;
 
     public:
         PhoneBook();

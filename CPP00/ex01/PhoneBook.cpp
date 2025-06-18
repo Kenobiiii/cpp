@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 10:11:11 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 12:42:34 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ PhoneBook::PhoneBook() : currentIndex_(0), totalContacts_(0) {
 PhoneBook::~PhoneBook() {
 }
 
+int PhoneBook::is_space(std::string str) const {
+    for (int i = 0; str[i]; i++) {
+        if (str[i] != ' ' || str[i] != '\t')
+            return 1;
+    }
+    return 0;
+}
+
 //- Request input from user and validate it's not empty
 std::string PhoneBook::getInput(const std::string& prompt) const {
     std::string input;
@@ -35,6 +43,10 @@ std::string PhoneBook::getInput(const std::string& prompt) const {
         if (std::cin.eof()) {
             std::cout << std::endl;
             exit(0);
+        }
+        
+        if (!is_space(input)) {
+            std::cout << "Field cannot be empty. Please try again." << std::endl;
         }
         
         if (input.empty()) {
