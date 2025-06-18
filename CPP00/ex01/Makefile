@@ -12,6 +12,9 @@ NAME = PhoneBook
 GREEN = \033[1;32m
 RESET = \033[0m
 
+# Headers
+HEADERS = Contact.hpp PhoneBook.hpp
+
 all: $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
@@ -19,9 +22,19 @@ $(NAME): $(OBJS)
 	@$(CC) $(CPPFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)Executable created: $(NAME)$(RESET)"
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+# Dependencias específicas de headers
+$(OBJ_DIR)/main.o: main.cpp PhoneBook.hpp Contact.hpp | $(OBJ_DIR)
 	@echo "$(GREEN)Compiling $<...$(RESET)"
-	@mkdir -p $(dir $@)
+	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@echo "$(GREEN)$< compiled!$(RESET)"
+
+$(OBJ_DIR)/PhoneBook.o: PhoneBook.cpp PhoneBook.hpp Contact.hpp | $(OBJ_DIR)
+	@echo "$(GREEN)Compiling $<...$(RESET)"
+	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@echo "$(GREEN)$< compiled!$(RESET)"
+
+$(OBJ_DIR)/Contact.o: Contact.cpp Contact.hpp | $(OBJ_DIR)
+	@echo "$(GREEN)Compiling $<...$(RESET)"
 	@$(CC) $(CPPFLAGS) -c $< -o $@
 	@echo "$(GREEN)$< compiled!$(RESET)"
 

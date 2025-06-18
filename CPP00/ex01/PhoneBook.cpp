@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/05/31 20:39:30 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 10:11:11 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ std::string PhoneBook::getInput(const std::string& prompt) const {
 
 //- Display one row of the contacts table
 void PhoneBook::displayContactRow(int index, const Contact& contact) const {
-    std::cout << "|" << std::setw(10) << index;
+    std::cout << "|" << std::setw(10) << index; //- setw makes that the value is 10 (in this case) characters wide, if the value is shorter than 10, it fills with spaces
     std::cout << "|" << std::setw(10) << contact.truncateField(contact.getName());
     std::cout << "|" << std::setw(10) << contact.truncateField(contact.getSurname());
     std::cout << "|" << std::setw(10) << contact.truncateField(contact.getNickname());
@@ -111,44 +111,12 @@ void PhoneBook::searchContact() const {
         exit(0);
     }
     
-    std::stringstream ss(input);
+    std::stringstream ss(input); //- stringstream verify if the input can be transformed to int
     int index;
     
     if (ss >> index && ss.eof() && index >= 0 && index < totalContacts_) {
         contacts_[index].displayContact();
     } else {
         std::cout << "Invalid index." << std::endl;
-    }
-}
-
-//- Main loop
-void PhoneBook::run() {
-    std::string command;
-    
-    std::cout << "Welcome to your PhoneBook!" << std::endl;
-    
-    while (true) {
-        std::cout << "Enter command (ADD, SEARCH, EXIT): ";
-        std::getline(std::cin, command);
-        
-        
-        if (std::cin.eof()) {
-            std::cout << std::endl;
-            break;
-        }
-        
-        if (command == "ADD") {
-            addContact();
-        }
-        else if (command == "SEARCH") {
-            searchContact();
-        }
-        else if (command == "EXIT") {
-            std::cout << "Goodbye!" << std::endl;
-            break;
-        }
-        else {
-            std::cout << "Invalid command. Use ADD, SEARCH, or EXIT." << std::endl;
-        }
     }
 }

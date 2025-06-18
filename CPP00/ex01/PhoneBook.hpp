@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/05/31 20:32:21 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:09:30 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ class PhoneBook {
         PhoneBook();
         ~PhoneBook();
 
-        void addContact();
-        void searchContact() const;
-        void run();  
+    void addContact();
+    void searchContact() const;
 };
 
 #endif

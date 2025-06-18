@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:15:16 by paromero          #+#    #+#             */
-/*   Updated: 2025/05/31 19:35:05 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:08:51 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,15 +64,6 @@ std::string Contact::getDarkestSecret() const {
 }
 
 //? UTILITY FUNCTIONS
-
-//- Check if is empty
-/*
-* .empty checks if the string in fact is empty, if is empty, return (1), if not, 0,
-* function of #include <string.h>
-*/
-bool Contact::isEmpty() const {
-    return name_.empty();
-}
 
 //- Show all the information of the contact
 void Contact::displayContact() const {
