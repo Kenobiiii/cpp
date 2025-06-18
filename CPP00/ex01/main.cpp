@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:22:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 17:09:31 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/18 17:30:13 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,17 @@ std::string ft_toupper(std::string& str) {
     return str;
 }
 
-int main() {
+int main(int ac, char **av) {
     PhoneBook phoneBook;
     std::string command;
+    (void)av;
+    
+    if (ac != 1) {
+        std::cout << "Use: PhoneBook\n";
+        return 0;
+    }
     
     std::cout << "Welcome to your PhoneBook!" << std::endl;
-    
     while (true) {
         std::cout << "Enter command (ADD, SEARCH, EXIT): ";
         std::getline(std::cin, command);
