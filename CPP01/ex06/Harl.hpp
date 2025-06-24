@@ -6,14 +6,14 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 12:53:34 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iostream>
-# include <string>
+#include <iostream>
+#include <string>
 
 class Harl {
     private:

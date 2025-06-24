@@ -6,15 +6,15 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:19:51 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <iostream>
-# include <string>
-# include <cmath>
+#include <iostream>
+#include <string>
+#include <cmath>
 
 class Fixed {
     private:

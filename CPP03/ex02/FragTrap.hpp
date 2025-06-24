@@ -6,15 +6,15 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 14:15:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:29:39 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-# include <iostream>
-# include <string>
-# include <cmath>
-# include "ClapTrap.hpp"
+#include <iostream>
+#include <string>
+#include <cmath>
+#include "ClapTrap.hpp"
 
 class FragTrap : public ClapTrap {
     public:

@@ -6,14 +6,14 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:25:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:29:04 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-# include <iostream>
-# include <string>
-# include <cmath>
+#include <iostream>
+#include <string>
+#include <cmath>
 
 class ClapTrap {
     protected:

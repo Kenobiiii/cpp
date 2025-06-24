@@ -6,15 +6,15 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 09:28:52 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:26:52 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # pragma once
 
-# include <iostream>
-# include <iomanip>
-# include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <sstream>
 
 class Zombie {
     private:
