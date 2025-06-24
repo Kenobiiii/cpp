@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 10:22:05 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/01 10:40:07 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#pragma once
 
 # include <iostream>
 # include <iomanip>
@@ -33,5 +32,3 @@ class Zombie {
 };
 
 Zombie* zombieHorde( int N, std::string name );
-
-#endif

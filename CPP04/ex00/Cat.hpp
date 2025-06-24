@@ -6,13 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 12:22:50 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/06 12:43:25 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:31:17 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
-
+#pragma once
 # include "Animal.hpp"
 
 class Cat : public Animal {
@@ -31,5 +29,3 @@ class Cat : public Animal {
         void makeSound() const;
 
 };
-
-#endif

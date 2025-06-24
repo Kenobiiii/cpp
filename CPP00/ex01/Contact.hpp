@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:51 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/17 12:08:54 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_HPP
-# define CONTACT_HPP
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -48,5 +47,3 @@ class   Contact
         void displayContact() const;
         std::string truncateField(const std::string& field) const;
 };
-
-#endif

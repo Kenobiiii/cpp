@@ -1,6 +1,16 @@
-#ifndef DOG_HPP
-# define DOG_HPP
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/24 11:31:27 by paromero          #+#    #+#             */
+/*   Updated: 2025/06/24 11:31:33 by paromero         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#pragma once
 # include "Animal.hpp"
 
 class Dog : public Animal {
@@ -12,4 +22,3 @@ class Dog : public Animal {
         void makeSound() const;
 };
 
-#endif

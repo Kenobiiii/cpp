@@ -6,13 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 14:15:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/05 15:00:48 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:29:39 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
-# define FRAGTRAP_HPP
-
+#pragma once
 # include <iostream>
 # include <string>
 # include <cmath>
@@ -33,5 +31,3 @@ class FragTrap : public ClapTrap {
         void highFivesGuys(void);
 
 };
-
-#endif

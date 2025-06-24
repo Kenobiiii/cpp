@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 12:19:51 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/04 18:53:46 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-# define FIXED_HPP
+#pragma once
 
 # include <iostream>
 # include <string>
@@ -67,5 +66,3 @@ class Fixed {
 
 //- we need especific functions to manage de operators with fixed vars
 std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
-
-#endif

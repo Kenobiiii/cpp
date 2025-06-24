@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 10:17:14 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/02 10:49:30 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSEFILE_HPP
-# define PARSEFILE_HPP
+#pragma once
 
 # include <iostream>
 # include <fstream>
@@ -32,5 +31,3 @@ class ParseFile {
         bool writeFile(std::string content);
         void processFile();
 };
-
-#endif

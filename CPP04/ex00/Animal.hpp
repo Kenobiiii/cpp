@@ -6,13 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 12:02:23 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/06 12:43:25 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:31:09 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
-
+#pragma once
 # include <iostream>
 # include <string>
 # include <cmath>
@@ -36,5 +34,3 @@ class Animal {
     virtual void makeSound() const;
     std::string getType() const;
 };
-
-#endif

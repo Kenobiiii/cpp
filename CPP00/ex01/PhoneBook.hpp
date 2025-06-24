@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 17:10:03 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#pragma once
 
 # include "Contact.hpp"
 # include <iostream>
@@ -40,5 +39,3 @@ class PhoneBook {
     void addContact();
     void searchContact() const;
 };
-
-#endif

@@ -6,16 +6,14 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 19:25:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/04 19:41:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:28:49 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_HPP
-# define CLAPTRAP_HPP
-
-# include <iostream>
-# include <string>
-# include <cmath>
+#pragma once
+#include <iostream>
+#include <string>
+#include <cmath>
 
 class ClapTrap {
     private:
@@ -41,5 +39,3 @@ class ClapTrap {
     void beRepaired(unsigned int amount);
 
 };
-
-#endif

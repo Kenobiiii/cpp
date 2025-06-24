@@ -6,12 +6,11 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/01 12:43:59 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/01 13:06:42 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/24 11:25:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
-# define HUMANB_HPP
+#pragma once
 
 # include "Weapon.hpp"
 # include <iostream>
@@ -28,6 +27,4 @@ class HumanB {
         void setWeapon(Weapon& weapon);
         void attack() const;
 };
-
-#endif
 

@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 18:43:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/18 18:58:25 by paromero         ###   ########.fr       */
+/*   Updated: 2025/06/19 17:26:45 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,16 +72,17 @@ std::string PhoneBook::getInput(const std::string& prompt, int i) const {
         
         FixedInput = DeleteSpaces(input);
         
-        if (FixedInput.empty()) {
+        if (i && !valid_phonenumber(FixedInput)) {
+            std::cout << "Must be a valid phone number" << std::endl;
+        }
+
+        else if (FixedInput.empty()) {
             std::cout << "Field cannot be empty. Please try again." << std::endl;
         }
         else if (!is_alphanumeric(FixedInput)) {
             std::cout << "Print alphanumeric values" << std::endl;
         }
 
-        if (i && !valid_phonenumber(FixedInput)) {
-            std::cout << "Must be a valid phone number" << std::endl;
-        }
 
     } while (FixedInput.empty() || !is_alphanumeric(FixedInput) || (i && !valid_phonenumber(FixedInput)));
     
