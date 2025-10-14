@@ -5,26 +5,37 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 11:25:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/03 13:00:42 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/14 08:55:39 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/14 09:48:46 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-Fixed::Fixed() : rawBits_(0) {
+Fixed::Fixed() {
     std::cout << "Default constructor called" << std::endl;
+    value_ = 0;
 }
 
-Fixed::Fixed(const Fixed& other) : rawBits_(other.rawBits_) {
+Fixed::Fixed(const Fixed& other) {
     std::cout << "Copy constructor called" << std::endl;
+    this->value_ = other.getRawBits();    
 }
+
+Fixed::Fixed(const int value) {
+    std::cout << "Int constructor called" << std::endl;
+    this->value_ = value << this->FractionalBits_ ;    
+}
+
+Fixed::Fixed(const float value) {
+    std::cout << "Float constructor called" << std::endl;
+    this->value_ = (int)roundf(value * (1 << this->FractionalBits_)) ;    
+}  
 
 Fixed& Fixed::operator=(const Fixed& other) {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this != &other) {
-        this->rawBits_ = other.rawBits_;
-    }
+    if (this != &other)
+        this->value_ = other.getRawBits();
     return *this;
 }
 
@@ -32,39 +43,24 @@ Fixed::~Fixed() {
     std::cout << "Destructor called" << std::endl;
 }
 
-int Fixed::getRawBits() const {
+int Fixed::getRawBits(void) const {
     std::cout << "getRawBits member function called" << std::endl;
-    return this->rawBits_;
+    return this->value_;
 }
 
 void Fixed::setRawBits(int const raw) {
-    this->rawBits_ = raw;
+    this->value_ = raw;
 }
 
-// Constructor con entero
-Fixed::Fixed(const int value) {
-    std::cout << "Int constructor called" << std::endl;
-    this->rawBits_ = value << fractionalBits_;  // Desplazar bits para fixed-point
+float Fixed::toFloat(void) const {
+    return (float)this->value_ / (1 << this->FractionalBits_);
 }
 
-// Constructor con float
-Fixed::Fixed(const float value) {
-    std::cout << "Float constructor called" << std::endl;
-    this->rawBits_ = roundf(value * (1 << fractionalBits_));  // Convertir y redondear
+int Fixed::toInt(void) const {
+    return this->value_ >> this->FractionalBits_;
 }
 
-// Convertir fixed-point a float
-float Fixed::toFloat() const {
-    return (float)this->rawBits_ / (1 << fractionalBits_);
-}
-
-// Convertir fixed-point a int
-int Fixed::toInt() const {
-    return this->rawBits_ >> fractionalBits_;  // Desplazar bits para obtener parte entera
-}
-
-// Operador de inserción (<<) - ESTA ES LA FUNCIÓN QUE TE PIDEN
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed) {
-    out << fixed.toFloat();  // Insertar representación en punto flotante
+std::ostream& operator<<(std::ostream& out, const Fixed& other) {
+    out << other.toFloat();
     return out;
 }

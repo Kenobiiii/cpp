@@ -5,64 +5,58 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/03 12:19:51 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/14 08:47:47 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/14 10:49:22 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include <string>
+#include <string.h>
 #include <cmath>
 
 class Fixed {
     private:
-        int rawBits_;
-        static const int fractionalBits_ = 8;
-        
-    public:
-        Fixed();
+        int value_;
+        static const int FractionalBits_ = 8;
 
-        Fixed(const int value);
-        
-        Fixed(const float value);
-        
-        //- Copy constructor, copy into a new var the value and assigns new direction
-        Fixed(const Fixed& other);
-        
-        //- Operator constructor, copy in an existing var the value and assigns new direction
-        Fixed& operator=(const Fixed& other);
-        
-        ~Fixed();
-        
-        float toFloat(void) const;
-        int toInt(void) const;
-        int getRawBits(void) const;
-        void setRawBits(int const raw);
-        
-        bool operator>(const Fixed& value) const;
-        bool operator<(const Fixed& value) const;
-        bool operator>=(const Fixed& value) const;
-        bool operator<=(const Fixed& value) const;
-        bool operator==(const Fixed& value) const;
-        bool operator!=(const Fixed& value) const;
-        
-        Fixed operator+(const Fixed& value) const;
-        Fixed operator-(const Fixed& value) const;
-        Fixed operator*(const Fixed& value) const;
-        Fixed operator/(const Fixed& value) const;
-        
-        Fixed &operator++();
-        Fixed operator++(int);
-        Fixed &operator--();
-        Fixed operator--(int);
+        public:
+            Fixed();
+            Fixed(const int value);
+            Fixed(const float value);
+            Fixed(const Fixed& other);
+            ~Fixed();
+            
+            bool operator>(const Fixed& other) const;
+            bool operator<(const Fixed& other) const;
+            bool operator>=(const Fixed& other) const;
+            bool operator<=(const Fixed& other) const;
+            bool operator==(const Fixed& other) const;
+            bool operator!=(const Fixed& other) const;
+            
+            Fixed& operator=(const Fixed& other);
+            Fixed operator+(const Fixed& other) const;
+            Fixed operator-(const Fixed& other) const;
+            Fixed operator*(const Fixed& other) const;
+            Fixed operator/(const Fixed& other) const;
 
-        static Fixed min(Fixed& left, Fixed& right);
-        static Fixed min(const Fixed& left, const Fixed& right);
-        static Fixed max(Fixed& left, Fixed& right);
-        static Fixed max(const Fixed& left, const Fixed& right);
-};
+            Fixed &operator++();
+            Fixed operator++(int);
+            Fixed &operator--();
+            Fixed operator--(int);
 
-//- we need especific functions to manage de operators with fixed vars
-std::ostream& operator<<(std::ostream& out, const Fixed& fixed);
+
+            
+            float toFloat(void) const;
+            int toInt(void) const;
+            int getRawBits(void) const;
+            void setRawBits(int const raw);
+
+            static Fixed &min(Fixed &left, Fixed &right);
+            static const Fixed &min(const Fixed &left, const Fixed &right);
+            static Fixed &max(Fixed &left, Fixed &right);
+            static const Fixed &max(const Fixed &left, const Fixed &right);
+        };
+
+std::ostream& operator<<(std::ostream& out, const Fixed& other);

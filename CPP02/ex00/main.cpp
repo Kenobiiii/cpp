@@ -5,20 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/02 18:40:02 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/03 12:15:19 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/14 08:48:17 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/14 08:48:48 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
-int main( void ) 
-{
-    //- making a decimal number fixed transform it into a Int to be more precise in binary
+int main( void )
+{    
     Fixed a;
     Fixed b( a );
     Fixed c;
-
+    
     c = b;
     
     std::cout << a.getRawBits() << std::endl;
