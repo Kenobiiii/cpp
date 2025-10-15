@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 19:20:30 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/04 19:25:24 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/15 11:41:22 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/15 12:17:43 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-int main() {
+int main () {
 	// Crear un ClapTrap
 	ClapTrap robot("R2D2");
 

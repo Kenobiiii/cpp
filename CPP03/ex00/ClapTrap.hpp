@@ -5,37 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 19:25:04 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:28:49 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/15 11:41:36 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/15 12:16:27 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
 #include <iostream>
-#include <string>
-#include <cmath>
+#include <string.h>
 
 class ClapTrap {
     private:
-        std::string name_;
-        int Hit_points_;
-        int Energy_points_;
-        int Attack_damage_;
-        
+        std::string Name_;
+        int HitPoints_;
+        int EnergyPoints_;
+        int AttackDamage_;
+
     public:
-        ClapTrap(const std::string& name);
-
+        ClapTrap(std::string Name_);
         ~ClapTrap();
-
-        //- Copy constructor, copy into a new var the value and assigns new direction
         ClapTrap(const ClapTrap& other);
-        
-        //- Operator constructor, copy in an existing var the value and assigns new direction
         ClapTrap& operator=(const ClapTrap& other);
-        
-        
-    void attack(const std::string& target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+
+        void attack(const std::string& target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);
 
 };
