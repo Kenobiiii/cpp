@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:34:48 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 17:36:47 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/16 09:38:31 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap : public ClapTrap {
+class FragTrap : virtual public ClapTrap {
     public:
     FragTrap(const std::string& name);
     ~FragTrap();
