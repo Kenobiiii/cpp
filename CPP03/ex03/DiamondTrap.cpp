@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 09:15:53 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/16 09:46:00 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/16 09:47:26 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ DiamondTrap::DiamondTrap(const std::string& name) : ClapTrap(name + "_clap_name"
     this->EnergyPoints_ = 50;
     this->AttackDamage_ = 30;
     std::cout << "DiamondTrap constructor called" << std::endl;
-    std::cout << "Hitpoints: " << this->HitPoints_ << " Energy: " << this->EnergyPoints_ << " AttackDamage: " << this->AttackDamage_ << std::endl;
 }
 
 DiamondTrap::~DiamondTrap() {
