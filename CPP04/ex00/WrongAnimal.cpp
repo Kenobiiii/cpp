@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:31:51 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:31:52 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:24:23 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,4 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other) {
 
 void WrongAnimal::makeSound() const {
     std::cout << "Some generic wrong animal sound!" << std::endl;
-}
-
-std::string WrongAnimal::getType() const {
-    return type_;
 }

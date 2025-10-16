@@ -5,32 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/06 12:02:23 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/16 11:46:03 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/16 12:07:14 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
+
 #include <iostream>
-#include <string>
-#include <cmath>
+#include <string.h>
 
 class Animal {
-    protected:
-        std::string type_;
-        
-    public:
-        Animal(const std::string& type = "Animal");
+protected:
+    std::string type_;
 
-        virtual ~Animal();
+public:
+    Animal(const std::string& type);
+    virtual ~Animal();
+    Animal(const Animal& other);
+    Animal& operator=(const Animal& other);
 
-        //- Copy constructor, copy into a new var the value and assigns new direction
-        Animal(const Animal& other);
-        
-        //- Operator constructor, copy in an existing var the value and assigns new direction
-        Animal& operator=(const Animal& other);
-        
-    //- virtual means that the child class redefines the function
-    virtual void makeSound() const;
-    std::string getType() const;
+    virtual void MakeSound() const;
 };

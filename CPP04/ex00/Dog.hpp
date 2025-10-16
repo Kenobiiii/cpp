@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 11:31:27 by paromero          #+#    #+#             */
-/*   Updated: 2025/06/24 11:34:07 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/16 11:50:31 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/16 12:03:20 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ class Dog : public Animal {
     public:
         Dog();
         ~Dog();
-        Dog(const Dog& other);
-        Dog& operator=(const Dog& other);
-        void makeSound() const;
+        
+        void MakeSound() const;
 };
-

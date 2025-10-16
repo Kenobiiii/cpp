@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 11:31:55 by paromero          #+#    #+#             */
-/*   Updated: 2025/09/10 09:18:24 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/16 13:24:26 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,4 @@ class WrongAnimal {
         WrongAnimal(const WrongAnimal& other);
         WrongAnimal& operator=(const WrongAnimal& other);
         void makeSound() const;
-        std::string getType() const;
 };
