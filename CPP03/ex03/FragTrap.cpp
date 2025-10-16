@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 17:35:21 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 17:41:10 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/16 09:54:00 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 FragTrap::FragTrap(const std::string& name) : ClapTrap(name) {
     std::cout << "FragTrap Constructor called" << std::endl;
-    this->Name_ = name;
     this->HitPoints_ = 100;
     this->EnergyPoints_ = 100;
     this->AttackDamage_ = 30;

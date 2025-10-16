@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:41:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 17:46:22 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/16 09:54:20 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 ScavTrap::ScavTrap(const std::string& name) : ClapTrap(name) {
     std::cout << "ScavTrap Constructor called" << std::endl;
-    this->Name_ = name;
     this->HitPoints_ = 100;
     this->EnergyPoints_ = 50;
     this->AttackDamage_ = 20;
