@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 16:41:00 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 16:57:09 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/17 10:53:56 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void    ScavTrap::attack(const std::string& target) {
 }
     
 void ScavTrap::guardGate() {
-    if (this->HitPoints_ <= 0)
+    if (this->HitPoints_ > 0)
         std::cout << "ScavTrap " << this->Name_ << " is now in Gate Keeper mode" << std::endl;
 }

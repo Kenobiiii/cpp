@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 11:41:52 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/15 16:47:41 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/17 10:53:56 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void    ClapTrap::attack(const std::string& target) {
 }
 
 void    ClapTrap::takeDamage(unsigned int amount) {
-    if (this->HitPoints_ <= 0)
+    if (this->HitPoints_ > 0)
         this->HitPoints_ -= amount;
 }
 
 void    ClapTrap::beRepaired(unsigned int amount) {
-    if (this->HitPoints_ <= 0)
+    if (this->HitPoints_ > 0)
         this->HitPoints_ += amount;
 }
