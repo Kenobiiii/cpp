@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 11:46:03 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/16 12:07:14 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:43:44 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string.h>
+#include "Brain.hpp"
 
 class Animal {
 protected:

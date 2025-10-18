@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/06 12:43:31 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/16 13:24:20 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:43:02 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,10 @@
 
 int main()
 {
-	const Animal* meta = new Animal("Animal");
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	
-	i->MakeSound(); //will output the cat sound!
-	j->MakeSound();
-	meta->MakeSound();
-	
-	delete meta;
-	delete j;
-	delete i;
-	
-	std::cout << "\n--- Testing WrongAnimal ---" << std::endl;
-	const WrongAnimal* wrongMeta = new WrongAnimal();
-	const WrongAnimal* wrongCat = new WrongCat();
-	
-	wrongCat->makeSound();
-	wrongMeta->makeSound();
-	
-	delete wrongMeta;
-	delete wrongCat;
-
-	return 0;
+const Animal* j = new Dog();
+const Animal* i = new Cat();
+delete j;//should not create a leak
+delete i;
+return 0;
 }
+

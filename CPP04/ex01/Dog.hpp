@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 11:50:31 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/16 12:03:20 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:42:38 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,13 @@
 #include "Animal.hpp"
 
 class Dog : public Animal {
+    private:
+        Brain *brain;
     public:
         Dog();
         ~Dog();
+        Dog(const Dog& other);
+        Dog& operator=(const Dog& other);
         
         void MakeSound() const;
 };
