@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:07:02 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/20 17:14:48 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/21 10:01:54 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ class Ice : public AMateria {
         AMateria* clone() const;
         void use(ICharacter& target);
 };
-

@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 13:11:50 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/21 10:08:19 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/21 09:10:01 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/21 10:09:08 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
 #include "ICharacter.hpp"
 
-class ICharacter;
+class Character : public ICharacter {
+private:
+    AMateria *Materia_[4];
+    std::string Name_;
+    int count;
 
-class AMateria
-{
-    protected:
-        std::string type;
-    public:
-        AMateria(std::string const & type);
-        virtual ~AMateria();
-        AMateria(const AMateria& other);
-        AMateria& operator=(const AMateria& other);
-        
-        
-        std::string const & getType() const;
-        virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
+public:
+    Character(std::string name);
+    Character(const Character& other);
+    ~Character();
+    Character& operator=(const Character& other);
+
+    std::string const &getName() const;
+    void equip(AMateria* m);
+    void unequip(int idx);
+    void use(int idx, ICharacter& target);
+
 };
+

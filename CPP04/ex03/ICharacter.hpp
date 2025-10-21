@@ -6,14 +6,16 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:44:24 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/20 17:48:09 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/21 10:07:46 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
+#include <string>
 #include "AMateria.hpp"
 
+class AMateria;
 
 class ICharacter
 {

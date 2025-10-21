@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.hpp                                       :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 13:11:50 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/21 10:08:19 by paromero         ###   ########.fr       */
+/*   Created: 2025/10/21 09:37:10 by paromero          #+#    #+#             */
+/*   Updated: 2025/10/21 10:01:36 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-#include "ICharacter.hpp"
+#include "IMateriaSource.hpp"
 
-class ICharacter;
+class MateriaSource : public IMateriaSource {
+    private:
+        AMateria* Materia_[4];
+        int count;
 
-class AMateria
-{
-    protected:
-        std::string type;
     public:
-        AMateria(std::string const & type);
-        virtual ~AMateria();
-        AMateria(const AMateria& other);
-        AMateria& operator=(const AMateria& other);
+        MateriaSource();
+        virtual ~MateriaSource();
+        MateriaSource(const MateriaSource& other);
+        MateriaSource& operator=(const MateriaSource& other);
+
+        void learnMateria(AMateria* Materia);
+        AMateria* createMateria(std::string const & type);
         
-        
-        std::string const & getType() const;
-        virtual AMateria* clone() const = 0;
-        virtual void use(ICharacter& target);
 };

@@ -6,12 +6,12 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:41:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/20 17:42:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/21 10:12:36 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
 #include "AMateria.hpp"
+#include "Cure.hpp"
 
 Cure::Cure() : AMateria("Cure") {
     std::cout << "Cure constructor called" << std::endl;
@@ -28,7 +28,7 @@ Cure::Cure(const Cure& other) : AMateria(other) {
 Cure& Cure::operator=(const Cure& other) {
     if (this != &other) {
         AMateria::operator=(other);
-        std::cout << "Cure assignment operator called - Type: " << type_ << std::endl;
+        std::cout << "Cure assignment operator called" << std::endl;
     }
     return *this;
 }
