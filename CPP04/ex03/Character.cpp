@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 09:15:31 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/21 10:11:22 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/21 10:17:09 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 Character::Character(std::string name) {
     this->Name_ = name;
+    this->count = 0;
+    for (int i = 0; i < 4; i++)
+        Materia_[i] = NULL;
     std::cout << "Character constructor called" << std::endl;
 }
 

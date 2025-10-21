@@ -6,14 +6,14 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:41:28 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/21 10:12:36 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/21 10:17:09 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "AMateria.hpp"
 #include "Cure.hpp"
 
-Cure::Cure() : AMateria("Cure") {
+Cure::Cure() : AMateria("cure") {
     std::cout << "Cure constructor called" << std::endl;
 }
 

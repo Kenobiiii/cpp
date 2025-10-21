@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 09:42:17 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/21 10:11:48 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/21 10:17:09 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ MateriaSource::~MateriaSource() {
 }
 
 MateriaSource& MateriaSource::operator=(const MateriaSource& other) {
-    if (this != &other)
+    if (this == &other)
         return (*this);
     this->count = other.count;
     for (int i = 0; i < 4; i++)
