@@ -5,9 +5,9 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 USER = paromero
 OBJ_DIR = objs
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-SRCS = main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
 
-NAME = Brain
+NAME = Form
 
 GREEN = \033[1;32m
 RESET = \033[0m
