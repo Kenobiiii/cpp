@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 11:28:49 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/22 13:09:23 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/22 17:22:11 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ Bureaucrat::Bureaucrat() {
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) {
+    if (grade < 1)
+        throw GradeTooHighException();
+    if (grade > 150)
+        throw GradeTooLowException();
     this->Name_ = name;
-    
     this->Grade_ = grade;
 }
 
