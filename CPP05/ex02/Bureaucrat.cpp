@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 11:28:49 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/22 17:54:42 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/23 08:34:26 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,23 @@ void    Bureaucrat::decrementGrade() {
         this->Grade_++;
 }
 
-void    Bureaucrat::signForm(Form &form) {
+void    Bureaucrat::signForm(AForm &form) {
     try {
         form.beSigned(*this);
         std::cout << this->getName() << " signed " << form.getName() << std::endl;
     }
     catch (const GradeTooLowException &e) {
         std::cout << this->getName() << " couldn't sign " << form.getName() << " because: " << e.what() << std::endl;
+    }
+}
+
+void    Bureaucrat::executeForm(AForm const & form) const {
+    try {
+        form.execute(*this);
+        std::cout << this->getName() << " executed " << form.getName() << std::endl;
+    }
+    catch (const std::exception &e) {
+        std::cout << this->getName() << " couldn't execute " << form.getName() << " because: " << e.what() << std::endl;
     }
 }
 

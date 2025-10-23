@@ -6,21 +6,22 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 08:07:37 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/23 08:14:55 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/23 08:43:11 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include "Bureaucrat.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", false, 72, 45) {
     this->target_ = "default";
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", false, 72, 45) {
     this->target_ = target;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm("RobotomyRequestForm", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other) : AForm("RobotomyRequestForm", false, 72, 45) {
     this->target_ = other.target_;
 }
 
@@ -33,14 +34,17 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& o
 
 void    RobotomyRequestForm::execute(Bureaucrat const & executor) const {
     if (!this->getIsSigned())
-        throw NotSigned();
+        throw AForm::NotSigned();
     if (this->getExecGrade() < executor.getGrade())
         throw GradeTooLowException();
     srand(time(0));
     int random  = rand() % 2;
 
     if (random % 2 == 0)
-        std::cout << this->target_ << " has been robotomized" << std::endl;
+        std::cout << this->target_ << " has been robotomized successfully!" << std::endl;
     else
-        std::cout << "The robotomization failed in " << this->target_ << std::endl;
+        std::cout << "The robotomization failed for " << this->target_ << std::endl;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm() {
 }

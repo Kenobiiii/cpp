@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 17:32:53 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/22 18:52:10 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/23 08:34:26 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ class Bureaucrat {
         int         getGrade() const;
         void        incrementGrade();
         void        decrementGrade();
-        void        signForm(Form &form);
+        void        signForm(AForm &form);
+        void        executeForm(AForm const & form) const;
 
         
 };

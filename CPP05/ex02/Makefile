@@ -5,9 +5,9 @@ CPPFLAGS = -Wall -Wextra -Werror -std=c++98
 USER = paromero
 OBJ_DIR = objs
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp
+SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 
-NAME = Form
+NAME = AForm
 
 GREEN = \033[1;32m
 RESET = \033[0m
