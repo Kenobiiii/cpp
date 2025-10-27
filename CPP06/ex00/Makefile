@@ -7,7 +7,7 @@ OBJ_DIR = objs
 OBJS = $(patsubst %.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 SRCS = main.cpp ScalarConverter.cpp
 
-NAME = ScalarConverter
+NAME = convert
 
 GREEN = \033[1;32m
 RESET = \033[0m
