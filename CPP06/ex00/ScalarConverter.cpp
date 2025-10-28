@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 09:05:41 by paromero          #+#    #+#             */
-/*   Updated: 2025/10/27 10:55:13 by paromero         ###   ########.fr       */
+/*   Updated: 2025/10/28 08:18:45 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ ScalarConverter::ScalarConverter(const ScalarConverter &other) {
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {
     (void) other;
     return *this;
+}
+
+bool    ScalarConverter::isOnlyChar(const std::string &input) {
+    if (input.length() != 3)
+        return false;
+    if (!isprint(static_cast<unsigned char>(input[1])))
+        return false;
+    if (isdigit(static_cast<unsigned char>(input[1])))
+        return false;
+    if (input[0] != '\'')
+        return false;
+    return true;
 }
 
 bool    ScalarConverter::isChar(const std::string &input) {
@@ -125,6 +137,15 @@ void ScalarConverter::convert(const std::string &input) {
             std::cout << "double: " << input << std::endl;
         }
         
+        return;
+    }
+
+    else if (isOnlyChar(input)) {
+        char c = input[1];
+        std::cout << "char: '" << c << "'" << std::endl;
+        std::cout << "int: " << static_cast<int>(c) << std::endl;
+        std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+        std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
         return;
     }
 
