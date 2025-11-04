@@ -6,13 +6,31 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:33:49 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 11:18:07 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:38:16 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() {
+    std::ifstream file("data.csv");
+    if (!file.is_open())
+    {
+        std::cerr << "Couldn't open the file" << std::endl;
+        return;
+    }
+
+    std::string line;
+
+    while (std::getline(file, line)) {
+        if (line != "date,exchange_rate" && line.length() > 11) {
+            double value;
+            std::stringstream ssvalue(line.substr(11));
+            ssvalue >> value;
+            this->_csvContainer.insert(std::make_pair(line.substr(0, 10), value));
+        }
+    }
+    file.close();
 }
 
 BitcoinExchange::~BitcoinExchange() {
@@ -20,11 +38,14 @@ BitcoinExchange::~BitcoinExchange() {
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) {
     this->_container = other._container;
+    this->_csvContainer = other._csvContainer;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange& other) {
-    if (this != &other)
+    if (this != &other) {
         this->_container = other._container;
+        this->_csvContainer = other._csvContainer;
+    }
     return *this;
 }
 
@@ -32,19 +53,19 @@ static  bool esBisiesto(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
 }
 
-static  std::string dateVerifier(std::string date) {
+static  std::string dateVerifier(std::string line) {
     int year_;
     int month_;
     int day_;
     static int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-    std::stringstream ssyear(date.substr(0, 4));
+    std::stringstream ssyear(line.substr(0, 4));
     ssyear >> year_;
-    std::stringstream ssmonth(date.substr(5, 2));
+    std::stringstream ssmonth(line.substr(5, 2));
     ssmonth >> month_;
-    std::stringstream ssday(date.substr(8, 2));
+    std::stringstream ssday(line.substr(8, 2));
     ssday >> day_;
-    if (date[4] != '-' || date[7] != '-')
+    if (line[4] != '-' || line[7] != '-')
         return "Invalid date";
     if (year_ < 2009 || year_ > 2022)
         return "Invalid year";
@@ -59,23 +80,65 @@ static  std::string dateVerifier(std::string date) {
         maxDay = 29;
     if (day_ < 1 || day_ > maxDay)
         return "Invalid day";
-    return date;
+    return line;
 }
-static  std::string transformLine(std::string line) {
+
+std::string BitcoinExchange::calculateMoney(std::string line) {
+    std::string date = line.substr(0, 10);
+    std::string valueStr = line.substr(13);
+    
+    double bitcoinAmount;
+    std::stringstream ss(valueStr);
+    if (!(ss >> bitcoinAmount)) {
+        return "Error: bad input => " + line;
+    }
+    
+    if (bitcoinAmount < 0) {
+        return "Error: not a positive number.";
+    }
+    if (bitcoinAmount > 1000) {
+        return "Error: too large a number.";
+    }
+    
+    std::map<std::string, double>::iterator it = this->_csvContainer.find(date);
+    double price;
+    
+    if (it != this->_csvContainer.end()) {
+        price = it->second;
+    } else {
+        it = this->_csvContainer.lower_bound(date);
+        if (it == this->_csvContainer.begin()) {
+            return "Error: no previous date available";
+        }
+        --it;
+        price = it->second;
+    }
+    
+    double result = price * bitcoinAmount;
+    
+    std::stringstream output;
+    output << date << " => " << bitcoinAmount << " = " << result;
+    
+    return output.str();
+}
+
+std::string BitcoinExchange::transformLine(std::string line) {
     std::string Date;
     std::string Value;
     std::string newLine;
 
+    if (line.length() < 11)
+        return "Error: line too short";
     if (line[0] < 48 || line[0] > 57)
         return "doesn't start with a date";
     if (line.find(' ') != 10)
         return "Invalid date";
     line = dateVerifier(line);
-    std::cout << "Linea: " << line << std::endl;
-    
-    //! Limites de fecha 2009.1.02 - 2022.03.29
+    line = calculateMoney(line);
     return line;
 }
+
+
 
 void    BitcoinExchange::openinput(std::string inputname) {
     std::ifstream file(inputname.c_str());
@@ -89,8 +152,9 @@ void    BitcoinExchange::openinput(std::string inputname) {
     std::string line;
 
     while (std::getline(file, line)) {
+        if (line.empty())
+            continue;
         this->_container.push_back(transformLine(line));
-        if (!file.eof())
-        this->_container.push_back("\n");
     }
+    file.close();
 }
