@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:33:49 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 12:38:16 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:43:06 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,24 +66,27 @@ static  std::string dateVerifier(std::string line) {
     std::stringstream ssday(line.substr(8, 2));
     ssday >> day_;
     if (line[4] != '-' || line[7] != '-')
-        return "Invalid date";
+        return "Error: bad input => " + line.substr(0, 10);
     if (year_ < 2009 || year_ > 2022)
-        return "Invalid year";
+        return "Error: bad input => " + line.substr(0, 10);
     if (month_ < 1 || month_ > 12 || (year_ == 2022 && month_ > 3))
-        return "Invalid month";
+        return "Error: bad input => " + line.substr(0, 10);
     if (year_ == 2009 && month_ == 1 && day_ < 2)
-        return "Invalid day, too early";
+        return "Error: bad input => " + line.substr(0, 10);
     if (year_ == 2022 && (month_ > 3 || (month_ == 3 && day_ > 29)))
-        return "Invalid day, too late";
+        return "Error: bad input => " + line.substr(0, 10);
     int maxDay = daysInMonth[month_ - 1];
     if (month_ == 2 && esBisiesto(year_))
         maxDay = 29;
     if (day_ < 1 || day_ > maxDay)
-        return "Invalid day";
-    return line;
+        return "Error: bad input => " + line.substr(0, 10);
+    return line.substr(0, 10);
 }
 
 std::string BitcoinExchange::calculateMoney(std::string line) {
+    if (line.length() < 14)
+        return "Error: bad input => " + line;
+    
     std::string date = line.substr(0, 10);
     std::string valueStr = line.substr(13);
     
@@ -127,15 +130,19 @@ std::string BitcoinExchange::transformLine(std::string line) {
     std::string Value;
     std::string newLine;
 
-    if (line.length() < 11)
-        return "Error: line too short";
+    if (line.length() < 14)
+        return "Error: bad input => " + line;
     if (line[0] < 48 || line[0] > 57)
-        return "doesn't start with a date";
-    if (line.find(' ') != 10)
-        return "Invalid date";
-    line = dateVerifier(line);
-    line = calculateMoney(line);
-    return line;
+        return "Error: bad input => " + line;
+    if (line.find(" | ") != 10)
+        return "Error: bad input => " + line;
+    
+    std::string dateResult = dateVerifier(line);
+    if (dateResult != line.substr(0, 10) && dateResult.find("Error") == 0) {
+        return dateResult;
+    }
+    
+    return calculateMoney(line);
 }
 
 
