@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 09:40:34 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 11:57:39 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:46:19 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int main (int ac, char **av)
     BitcoinExchange asd;
 
     asd.openinput(av[1]);
-    //std::cout << "asd" << std::endl; 
+    asd.printResults();
+    
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:33:49 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 12:43:06 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:47:21 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,16 @@ void    BitcoinExchange::openinput(std::string inputname) {
     while (std::getline(file, line)) {
         if (line.empty())
             continue;
+        if (line == "date | value")
+            continue;
         this->_container.push_back(transformLine(line));
     }
     file.close();
+}
+
+void BitcoinExchange::printResults() const {
+    std::vector<std::string>::const_iterator it;
+    for (it = this->_container.begin(); it != this->_container.end(); ++it) {
+        std::cout << *it << std::endl;
+    }
 }

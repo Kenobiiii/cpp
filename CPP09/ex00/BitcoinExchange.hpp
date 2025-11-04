@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 09:59:26 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 12:34:33 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/04 12:46:20 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class BitcoinExchange {
         void openinput(std::string inputname);
         std::string transformLine(std::string line);
         std::string calculateMoney(std::string line);
+        void printResults() const;
         //!que hay que hacer?
         //! comprobar que al inicio del .txt pone date | value
         //! tenemos el .csv con todos los datos del bitcoin, y nos pasan un input.txt con varios datos
