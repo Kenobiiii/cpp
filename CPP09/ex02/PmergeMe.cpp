@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:28:22 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/06 12:51:17 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/06 13:17:59 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void    PmergeMe::sort() {
 
     for (size_t i = 0; i < main.size(); i++)
         this->dequecont_.push_back(main[i]);
+    
+    //! Paso 4: secuencia Jacobsthal
+    //! Paso 5: insertar si hay, straggler
 }
 
 std::deque<std::pair<int, int>> mergeSortPairs(std::deque<std::pair<int, int>>& pairs) {
