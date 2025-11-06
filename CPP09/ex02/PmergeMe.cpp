@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:28:22 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/06 09:54:08 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/06 12:42:22 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,26 +61,26 @@ void    PmergeMe::sort() {
     }
 }
 
-std::deque<int> mergeSort(std::deque<int>& cont) {
-    if (cont.size() <= 1)
-        return cont;
+std::deque<std::pair<int, int>> mergeSortPairs(std::deque<std::pair<int, int>>& pairs) {
+    if (pairs.size() <= 1)
+        return pairs;
     
-    size_t mid = cont.size() / 2;
-    std::deque<int> left(cont.begin(), cont.begin() + mid);
-    std::deque<int> right(cont.begin() + mid, cont.end());
+    size_t mid = pairs.size() / 2;
+    std::deque<std::pair<int, int>> left(pairs.begin(), pairs.begin() + mid);
+    std::deque<std::pair<int, int>> right(pairs.begin() + mid, pairs.end());
     
-    left = mergeSort(left);
-    right = mergeSort(right);
+    left = mergeSortPairs(left);
+    right = mergeSortPairs(right);
     
-    return merge(left, right);
+    return mergePairs(left, right);
 }
 
-std::deque<int> merge(std::deque<int>& left, std::deque<int>& right) {
-    std::deque<int> result;
+std::deque<std::pair<int, int>> mergePairs(std::deque<std::pair<int, int>>& left, std::deque<std::pair<int, int>>& right) {
+    std::deque<std::pair<int, int>> result;
     size_t i = 0, j = 0;
     
     while (i < left.size() && j < right.size()) {
-        if (left[i] <= right[j])
+        if (left[i].second <= right[j].second)
             result.push_back(left[i++]);
         else
             result.push_back(right[j++]);
