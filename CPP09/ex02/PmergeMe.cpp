@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:28:22 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/06 12:42:22 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/06 12:51:17 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,19 @@ void    PmergeMe::sort() {
     if (this->dequecont_.size() % 2 != 0)
         straggler = this->dequecont_[this->dequecont_.size() - 1];
     
-
+    pairs = mergeSortPairs(pairs);
+        
     for (size_t j = 0; j < pairs.size(); j++) {
         main.push_back(pairs[j].second);
         pend.push_back(pairs[j].first);
     }
+
+    this->dequecont_.clear();
+    this->dequecont_.push_back(pend[0]);
+    pend.erase(pend.begin());
+
+    for (size_t i = 0; i < main.size(); i++)
+        this->dequecont_.push_back(main[i]);
 }
 
 std::deque<std::pair<int, int>> mergeSortPairs(std::deque<std::pair<int, int>>& pairs) {
