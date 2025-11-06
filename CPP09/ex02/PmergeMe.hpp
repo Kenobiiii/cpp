@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:26:26 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/06 12:43:23 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/06 18:41:16 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 class PmergeMe {
     private:
         std::deque<int> dequecont_;
+        void insertWithBinarySearch(std::deque<int>& container, int value);
     
     public:
         PmergeMe(int ac, char **av);
@@ -30,7 +31,8 @@ class PmergeMe {
         PmergeMe operator=(const PmergeMe &other);
 
         void    sort();
+        const std::deque<int>& getContainer() const;
 };
 
-std::deque<std::pair<int, int>> mergeSortPairs(std::deque<std::pair<int, int>>& pairs);
-std::deque<std::pair<int, int>> mergePairs(std::deque<std::pair<int, int>>& left, std::deque<std::pair<int, int>>& right);
+std::deque<std::pair<int, int> > mergeSortPairs(std::deque<std::pair<int, int> >& pairs);
+std::deque<std::pair<int, int> > mergePairs(std::deque<std::pair<int, int> >& left, std::deque<std::pair<int, int> >& right);

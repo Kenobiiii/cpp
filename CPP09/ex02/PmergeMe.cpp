@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:28:22 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/06 13:17:59 by paromero         ###   ########.fr       */
+/*   Updated: 2025/11/06 18:44:32 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,27 @@ void    PmergeMe::sort() {
     for (size_t i = 0; i < main.size(); i++)
         this->dequecont_.push_back(main[i]);
     
-    //! Paso 4: secuencia Jacobsthal
-    //! Paso 5: insertar si hay, straggler
+    for (size_t i = 0; i < pend.size(); i++) {
+        this->insertWithBinarySearch(this->dequecont_, pend[i]);
+    }
+    
+    if (straggler != -1) {
+        this->insertWithBinarySearch(this->dequecont_, straggler);
+    }
 }
 
-std::deque<std::pair<int, int>> mergeSortPairs(std::deque<std::pair<int, int>>& pairs) {
+void PmergeMe::insertWithBinarySearch(std::deque<int>& container, int value) {
+    std::deque<int>::iterator it = std::lower_bound(container.begin(), container.end(), value);
+    container.insert(it, value);
+}
+
+std::deque<std::pair<int, int> > mergeSortPairs(std::deque<std::pair<int, int> >& pairs) {
     if (pairs.size() <= 1)
         return pairs;
     
     size_t mid = pairs.size() / 2;
-    std::deque<std::pair<int, int>> left(pairs.begin(), pairs.begin() + mid);
-    std::deque<std::pair<int, int>> right(pairs.begin() + mid, pairs.end());
+    std::deque<std::pair<int, int> > left(pairs.begin(), pairs.begin() + mid);
+    std::deque<std::pair<int, int> > right(pairs.begin() + mid, pairs.end());
     
     left = mergeSortPairs(left);
     right = mergeSortPairs(right);
@@ -86,8 +96,8 @@ std::deque<std::pair<int, int>> mergeSortPairs(std::deque<std::pair<int, int>>& 
     return mergePairs(left, right);
 }
 
-std::deque<std::pair<int, int>> mergePairs(std::deque<std::pair<int, int>>& left, std::deque<std::pair<int, int>>& right) {
-    std::deque<std::pair<int, int>> result;
+std::deque<std::pair<int, int> > mergePairs(std::deque<std::pair<int, int> >& left, std::deque<std::pair<int, int> >& right) {
+    std::deque<std::pair<int, int> > result;
     size_t i = 0, j = 0;
     
     while (i < left.size() && j < right.size()) {
@@ -103,4 +113,8 @@ std::deque<std::pair<int, int>> mergePairs(std::deque<std::pair<int, int>>& left
         result.push_back(right[j++]);
     
     return result;
+}
+
+const std::deque<int>& PmergeMe::getContainer() const {
+    return this->dequecont_;
 }
