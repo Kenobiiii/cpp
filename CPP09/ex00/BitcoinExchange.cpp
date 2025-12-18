@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 12:33:49 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 12:47:21 by paromero         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:03:44 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static  std::string dateVerifier(std::string line) {
     ssday >> day_;
     if (line[4] != '-' || line[7] != '-')
         return "Error: bad input => " + line.substr(0, 10);
-    if (year_ < 2009 || year_ > 2022)
+    if (year_ < 2009 || year_ > 9999)
         return "Error: bad input => " + line.substr(0, 10);
     if (month_ < 1 || month_ > 12 || (year_ == 2022 && month_ > 3))
         return "Error: bad input => " + line.substr(0, 10);
