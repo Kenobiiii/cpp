@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:28:22 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/11 17:21:03 by paromero         ###   ########.fr       */
+/*   Updated: 2025/12/18 09:56:57 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,20 @@ static std::deque<std::pair<int, int> > mergeSortPairsDeque(std::deque<std::pair
     return mergePairsDeque(left, right);
 }
 
+static std::deque<size_t> generateJacbosthalDeque(size_t n) {
+    std::deque<size_t> jacob;
+    jacob.push_back(1);
+    jacob.push_back(3);
+    //! first two values of jacobsthal
+
+    while (jacob.back() < n) {
+        size_t last = jacob.back();
+        size_t prev = jacob[jacob.size() - 2]; //! we access the penultimate
+        jacob.push_back(last + (2 * prev)); //! formula: Jn = Jn-1 (last) + 2 * Jn-2 (penultimate)
+    }
+    return jacob;
+}
+
 std::deque<int> sortWithDeque(int ac, char **av) {
     std::deque<int> input;
     
@@ -91,13 +105,22 @@ std::deque<int> sortWithDeque(int ac, char **av) {
 
     std::deque<int> result;
     result.push_back(pend[0]);
-    pend.erase(pend.begin());
 
     for (size_t i = 0; i < main.size(); i++)
         result.push_back(main[i]);
     
-    for (size_t i = 0; i < pend.size(); i++) {
-        insertWithBinarySearchDeque(result, pend[i]);
+
+    std::deque<size_t> jacobsq = generateJacbosthalDeque(pend.size());  //! generate the value in base of the size of pend
+    size_t last_pos = 1; //! we inserted one value, so last_pos = 1
+    for (size_t i = 0; i < jacobsq.size(); i++) {
+        size_t current_jacob = jacobsq[i];
+        size_t limit = current_jacob;
+        if (limit > pend.size())
+            limit = pend.size();
+        for (size_t j = limit; j > last_pos; j--)
+            insertWithBinarySearchDeque(result, pend[j - 1]);
+        
+        last_pos = limit;
     }
     
     if (straggler != -1) {
@@ -163,6 +186,35 @@ static std::list<std::pair<int, int> > mergeSortPairsList(std::list<std::pair<in
     return mergePairsList(left, right);
 }
 
+//! Como list no tiene operador [], se crea esta función
+static int getElementAt(std::list<int>& lst, size_t index) {
+    std::list<int>::iterator it = lst.begin();
+    std::advance(it, index);
+    return *it;
+}
+
+static std::list<size_t> generateJacbosthalList(size_t n) {
+    std::list<size_t> jacob;
+    jacob.push_back(1);
+    jacob.push_back(3);
+
+    while (true) {
+        size_t last = jacob.back();
+        std::list<size_t>::iterator it = jacob.end();
+        it--;
+        it--;
+        size_t prev = *it;
+
+        size_t next = last + (2 * prev);
+        if (next >= n && last >= n)
+            break;
+        jacob.push_back(next);
+        if (next >= n)
+            break;
+    }
+    return jacob;
+}
+
 std::list<int> sortWithList(int ac, char **av) {
     std::list<int> input;
     
@@ -209,13 +261,24 @@ std::list<int> sortWithList(int ac, char **av) {
 
     std::list<int> result;
     result.push_back(pend.front());
-    pend.pop_front();
 
     for (std::list<int>::iterator iter = main.begin(); iter != main.end(); ++iter)
         result.push_back(*iter);
     
-    for (std::list<int>::iterator iter = pend.begin(); iter != pend.end(); ++iter) {
-        insertWithBinarySearchList(result, *iter);
+    std::list<size_t> jacobsq = generateJacbosthalList(pend.size());
+    size_t last_pos = 1;
+    for (std::list<size_t>::iterator iter = jacobsq.begin(); iter != jacobsq.end(); ++iter) {
+        size_t current_jacob = *iter;
+        size_t limit = current_jacob;
+        
+        if (limit > pend.size())
+            limit = pend.size();
+        
+        for (size_t j = limit; j > last_pos; j--) {
+            int val = getElementAt(pend, j - 1);
+            insertWithBinarySearchList(result, val);
+        }
+        last_pos = limit;
     }
     
     if (straggler != -1) {
