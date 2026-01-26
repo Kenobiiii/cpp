@@ -69,11 +69,9 @@ static  std::string dateVerifier(std::string line) {
         return "Error: bad input => " + line.substr(0, 10);
     if (year_ < 2009 || year_ > 9999)
         return "Error: bad input => " + line.substr(0, 10);
-    if (month_ < 1 || month_ > 12 || (year_ == 2022 && month_ > 3))
+    if (month_ < 1 || month_ > 12)
         return "Error: bad input => " + line.substr(0, 10);
     if (year_ == 2009 && month_ == 1 && day_ < 2)
-        return "Error: bad input => " + line.substr(0, 10);
-    if (year_ == 2022 && (month_ > 3 || (month_ == 3 && day_ > 29)))
         return "Error: bad input => " + line.substr(0, 10);
     int maxDay = daysInMonth[month_ - 1];
     if (month_ == 2 && esBisiesto(year_))
