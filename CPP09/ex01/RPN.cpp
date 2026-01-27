@@ -6,13 +6,13 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 18:24:38 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/04 20:15:01 by paromero         ###   ########.fr       */
+/*   Updated: 2026/01/27 09:09:11 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-RPN::RPN(const std::string &str) {
+RPN::RPN(const std::string &str) { 
     std::istringstream iss(str);
     std::string token;
     

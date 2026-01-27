@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 20:28:22 by paromero          #+#    #+#             */
-/*   Updated: 2025/12/18 09:56:57 by paromero         ###   ########.fr       */
+/*   Updated: 2026/01/27 11:05:15 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,12 @@ std::deque<int> sortWithDeque(int ac, char **av) {
     
     for (int i = 1; i < ac; ++i) {
         std::stringstream ss(av[i]);
-        int num;
-        if (!(ss >> num) || num < 0) {
+        int num = 0;
+        if (num < 0) {
             throw std::runtime_error("Error");
         }
-        input.push_back(num);
+        while (ss >> num)
+            input.push_back(num);
     }
     
     if (input.size() <= 1)
@@ -220,11 +221,12 @@ std::list<int> sortWithList(int ac, char **av) {
     
     for (int i = 1; i < ac; ++i) {
         std::stringstream ss(av[i]);
-        int num;
-        if (!(ss >> num) || num < 0) {
+        int num = 0;
+        if (num < 0) {
             throw std::runtime_error("Error");
         }
-        input.push_back(num);
+        while (ss >> num)
+            input.push_back(num);
     }
     
     if (input.size() <= 1)

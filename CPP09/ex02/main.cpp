@@ -6,7 +6,7 @@
 /*   By: paromero <paromero@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 18:48:44 by paromero          #+#    #+#             */
-/*   Updated: 2025/11/11 17:21:16 by paromero         ###   ########.fr       */
+/*   Updated: 2026/01/27 09:47:47 by paromero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(int ac, char **av) {
         }
         std::cout << std::endl;
         
-        std::cout << std::fixed << std::setprecision(5);
+        std::cout << std::fixed << std::setprecision(0);
         std::cout << "Time to process a range of " << (ac - 1) 
                   << " elements with std::deque : " << elapsedDeque << " us" << std::endl;
         std::cout << "Time to process a range of " << (ac - 1) 
